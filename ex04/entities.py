@@ -20,8 +20,9 @@ class Person:
     def get(cls, key: str, db: Cursor) -> Optional[Person]:
         sql = "SELECT key, name, age FROM person WHERE key = ?"
         res = db.execute(sql, (key,))
+        data = res.fetchone()
 
-        if data := res.fetchone():
+        if data:
             return Person(key=data[0], name=data[1], age=data[2])
 
     @classmethod
