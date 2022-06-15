@@ -4,7 +4,10 @@ from http import HTTPStatus
 from json import JSONDecodeError
 from typing import Any, Dict, Optional
 
-import requests
+try:
+    import requests
+except ImportError:
+    from ex06 import fake_requests as requests
 
 URL = "https://www.4devs.com.br/ferramentas_online.php"
 
